@@ -3,17 +3,27 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./common/Header/Header";
 import Pages from "./pages/Pages";
-// import Data from "./components/Data";
+// import { useProductsContext } from './context/products_context'
+import Data from "./components/Data";
 import Cart from "./common/Cart/Cart";
 import Footer from "./common/footer/Footer";
-// import Sdata from "./components/shops/Sdata";
+// import Loading from "./components/Loading";
+// import Error from "./components/Error";
 
 function App() {
-  // const { productItems } = Data;
-  // const { shopItems } = Sdata;
-
+  const { productItems } = Data;
   const [CartItem, setCartItem] = useState([]);
-
+  // const {
+  //   products_loading: loading,
+  //   products_error: error,
+  //   featured_products: productItems,
+  // } = useProductsContext()
+  // if (loading) {
+  //   return <Loading />
+  // }
+  // if (error) {
+  //   return <Error />
+  // }
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
@@ -53,9 +63,8 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Pages
-              // productItems={productItems}
+              productItems={productItems}
               addToCart={addToCart}
-              // shopItems={shopItems}
             />
           </Route>
           <Route path="/cart" exact>

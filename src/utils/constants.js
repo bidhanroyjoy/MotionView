@@ -17,3 +17,5 @@ export const links = [
     url: '/products',
   },
 ]
+
+export const products_url = 'https://idbdev.com/motion2/public/api/product-is-here-caught-me'
